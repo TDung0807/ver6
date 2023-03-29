@@ -1,5 +1,6 @@
 package trdung.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,4 +20,17 @@ public class productServiceImpl implements productService {
 		return prdRepo.findAll();
 	}
 
+	@Override
+	public List<Product> getAllPrdContain(String key) {
+		// TODO Auto-generated method stub
+		List<Product> result = new ArrayList<Product>();
+		for(Product i:getAllPrd()) {
+			System.out.println(i.getName());
+			if(i.getName().toLowerCase().contains(key.toLowerCase())) {
+				result.add(i);
+			}
+				
+		}
+		return result;
+	}
 }
